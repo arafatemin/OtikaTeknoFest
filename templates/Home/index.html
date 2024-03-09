@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <body>
+
+    <div class="main-wrapper">
+
+
+        <div class="page-wrapper">
+            <div class="content container-fluid">
+
+                {#                <div class="page-header">#}
+                {#                    <div class="content-page-header">#}
+                {#                        <h5>Otika</h5>#}
+                {#                    </div>#}
+                {#                </div>#}
+                {#                <hr>#}
+
+
+
+                {% for otika in otika_bilgiler %}
+
+                    <div class="row">
+
+                    <div class="col-12 col-md-4 col-lg-2 d-flex">
+                        <div class="card flex-fill bg-white">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">{{ otika.name }}</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Hız {{ otika.hiz }} m/s</li>
+                                <li class="list-group-item">ivme {{ otika.ivme }} m/m2</li>
+                                <li class="list-group-item">Rotasyon {{ otika.rotasyon }}</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-8 col-lg-8 d-flex">
+                        <div class="card flex-fill bg-white">
+
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.6130662479513!2d39.76555787627572!3d40.98995287135316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40643b7beb41c9c5%3A0x2a6bc93e668e920b!2zS2FyYWRlbml6IFRla25payDDnG5pdmVyc2l0ZXNpIEJpbGdpc2F5YXIgTcO8aGVuZGlzbGnEn2kgQsO2bMO8bcO8!5e0!3m2!1str!2str!4v1709971864250!5m2!1str!2str"
+                                    width="790" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+                            <div class="row">
+                                <div class="col-3 col-md-3 col-lg-3 d-flex">
+                                    <div class="card flex-fill bg-white">
+                                        <div class="card-header">
+                                            <a class="btn btn-outline-secondary"
+                                               href="#">{{ otika.time|time:"H:i:s" }}</a>
+                                        </div>
+
+                                        <div class="card-header">
+                                            <p style="font-size: 12px" class="mb-1">Tahmin Süresi:</p>
+                                            <h6 class="card-title mb-0">{{ otika.time }}</h6>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-3 col-md-3 col-lg-3 d-flex">
+                                    <div class="card flex-fill bg-white">
+                                        <img alt="Card Image" src="{% static 'images/batariye.jpeg' %}"
+                                             class="card-img-top">
+                                        <div class="card-header">
+                                            <h5 class="card-title mb-0">% {{ otika.ilac }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-3 col-md-3 col-lg-3 d-flex">
+                                    <div class="card flex-fill bg-white">
+                                        <img alt="Card Image" src="{% static 'images/batariye.jpeg' %}"
+                                             class="card-img-top">
+                                        <div class="card-header">
+                                            <h5 class="card-title mb-0">% {{ otika.batarya }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-3 col-md-3 col-lg-3 d-flex">
+                                    <div class="card flex-fill bg-white">
+                                        <div class="card-header">
+                                            <h6 class="card-title mb-0">{{ otika.derece }} C</h6>
+                                        </div>
+                                        <div class="card-header">
+                                            <h6 class="card-title mb-0">{{ otika.akim }} AK</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4 col-lg-2 d-flex">
+
+                        <div class="card flex-fill bg-white">
+                            <div class="card-header">
+                                <h6 class="card-title mb-0">Imha Edilen Bitki</h6>
+                            </div>
+
+                            <img alt="Card Image" src="{{ otika.bitki_resim }}" class="card-img-top">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">imha bitkiler: {{ otika.imha_bitkiler }}</li>
+                                <li class="list-group-item">Aşılan Engeller: {{ otika.asilan_engeller }}</li>
+                            </ul>
+                            <div class="card flex-fill bg-white">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <a class="btn btn-outline-success"
+                                           href="#">Başlat</a>
+                                        <hr>
+                                        <a class="btn btn-outline-danger"
+                                           href="#">Durdur</a>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <img alt="Card Image" style="width: 150px; height: 70px; border-color: blue"
+                                     src="{% static 'images/active_btn.png' %}" class="card-img-top">
+
+                                <img alt="Card Image" style="width: 150px; height: 150px"
+                                     src="{% static 'images/yon_tus.jpeg' %}" class="card-img-top">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                    {#                    <div class="row">#}
+                    {#                        <div class="col-12 col-md-6 col-lg-4 d-flex">#}
+                    {#                            <div class="card flex-fill bg-white">#}
+                    {#                                <img alt="Card Image" src="assets/img/img-01.jpg" class="card-img-top">#}
+                    {#                                <div class="card-header">#}
+                    {#                                    <h5 class="card-title mb-0">Card with image and links</h5>#}
+                    {#                                </div>#}
+                    {#                                <div class="card-body card-buttons">#}
+                    {#                                    <p class="card-text">Some quick example text to build on the card title and make up#}
+                    {#                                        the bulk#}
+                    {#                                        of the card's content.</p>#}
+                    {#                                    <a class="card-link" href="#">Card link</a>#}
+                    {#                                    <a class="card-link" href="#">Another link</a>#}
+                    {#                                </div>#}
+                    {#                            </div>#}
+                    {#                        </div>#}
+                    {#                        <div class="col-12 col-md-6 col-lg-4 d-flex">#}
+                    {#                            <div class="card flex-fill bg-white">#}
+                    {#                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.6130662479513!2d39.76555787627572!3d40.98995287135316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40643b7beb41c9c5%3A0x2a6bc93e668e920b!2zS2FyYWRlbml6IFRla25payDDnG5pdmVyc2l0ZXNpIEJpbGdpc2F5YXIgTcO8aGVuZGlzbGnEn2kgQsO2bMO8bcO8!5e0!3m2!1str!2str!4v1709971864250!5m2!1str!2str"#}
+                    {#                                         style="border:0;" allowfullscreen="" loading="lazy"#}
+                    {#                                        referrerpolicy="no-referrer-when-downgrade"></iframe>#}
+                    {#                                <div class="card-header">#}
+                    {#                                    <h5 class="card-title mb-0">Card with image and button</h5>#}
+                    {#                                </div>#}
+                    {#                                <div class="card-body card-buttons">#}
+                    {#                                    <p class="card-text">Some quick example text to build on the card title and make up#}
+                    {#                                        the bulk#}
+                    {#                                        of the card's content.</p>#}
+                    {#                                    <a class="btn btn-primary" href="#">Go somewhere</a>#}
+                    {#                                </div>#}
+                    {#                            </div>#}
+                    {#                        </div>#}
+                    {#                        <div class="col-12 col-md-6 col-lg-4 d-flex">#}
+                    {#                            <div class="card flex-fill bg-white">#}
+                    {#                                <img alt="Card Image" src="assets/img/img-01.jpg" class="card-img-top">#}
+                    {#                                <div class="card-header">#}
+                    {#                                    <h5 class="card-title mb-0">Card with image and list</h5>#}
+                    {#                                </div>#}
+                    {#                                <ul class="list-group list-group-flush">#}
+                    {#                                    <li class="list-group-item">Cras justo odio</li>#}
+                    {#                                    <li class="list-group-item">Dapibus ac facilisis in</li>#}
+                    {#                                    <li class="list-group-item">Vestibulum at eros</li>#}
+                    {#                                </ul>#}
+                    {#                            </div>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+
+                {% endfor %}
+                </div>
+            </div>
+
+        </div>
+
+
+    </body>
+
+{% endblock %}
